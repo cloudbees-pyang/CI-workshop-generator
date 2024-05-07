@@ -1,0 +1,17 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: My workflow
+
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  build:
+    steps:
+      - name: Download Jenkins Cli
+        uses: docker://openjdk
+        shell: sh
+        run: |
+          wget https://sda.preview.cb-demos.io/cjoc/jnlpJars/jenkins-cli.jar
