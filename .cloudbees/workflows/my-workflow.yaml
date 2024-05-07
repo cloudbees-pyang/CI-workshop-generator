@@ -15,4 +15,8 @@ jobs:
         shell: sh
         run: |
           curl -O https://sda.preview.cb-demos.io/cjoc/jnlpJars/jenkins-cli.jar
-          java -jar jenkins-cli.jar help
+      - name: Setup shared agent
+        uses: docker://openjdk
+        shell: sh
+        run: |
+          java -jar ./jenkins-cli.jar -auth pyang:$[THUNDER-OC-TOKEN] -s https://sda.preview.cb-demos.io/cjoc/ create-node default     
