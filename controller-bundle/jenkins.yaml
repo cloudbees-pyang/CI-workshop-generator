@@ -225,10 +225,6 @@ unclassified:
     charset: "UTF-8"
     useSsl: false
     useTls: false
-  operationsCenterRootAction:
-    connectionDetails: "----- BEGIN CONNECTION DETAILS -----\nH4sIAAAAAAAA/x3NQQ7CIBCF4buwFmgbBOwJ3HsCGKZaJR0zgCYa7y66/fK/vLc4c9iqmMUSYHTT\r\
-      \nkKR16KSxcZE++UGOEYMxfu8OOImdWFNvRyuPxOuLti6Nc6dLrfdZa7gSKMjUUkQsEohRlcePWqnI\r\
-      \nKhOE/K90nz4xnghu2P8rN/x8AVLepsKOAAAA\r\n----- END CONNECTION DETAILS -----\n"
   pollSCM:
     pollingThreadCount: 10
   scmGit:
