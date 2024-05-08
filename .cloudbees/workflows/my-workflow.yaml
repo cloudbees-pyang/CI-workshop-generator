@@ -14,6 +14,7 @@ jobs:
         run: |
           curl -O https://sda.preview.cb-demos.io/cjoc/jnlpJars/jenkins-cli.jar
           chmod a+x ./jenkins-cli.jar
+          pwd
       - uses: cloudbees-io/checkout@v1
         name: Download Assets
         with:
@@ -23,6 +24,7 @@ jobs:
         name: Setup shared agent
         shell: sh
         run: |
+          pwd
           ls
           java -jar ./jenkins-cli.jar -auth pyang:${{ secrets.THUNDER_OC_TOKEN
           }} -s https://sda.preview.cb-demos.io/cjoc/ shared-pod-template
