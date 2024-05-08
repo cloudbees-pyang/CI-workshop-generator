@@ -26,4 +26,4 @@ jobs:
         run: |
           java -jar ./jenkins-cli.jar -auth pyang:${{ secrets.THUNDER_OC_TOKEN
           }} -s https://sda.preview.cb-demos.io/cjoc/ shared-pod-template
-          --add <./assets/share-pod-template.json      
+          add <./assets/share-pod-template.json      
