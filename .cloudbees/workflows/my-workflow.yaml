@@ -29,4 +29,4 @@ jobs:
         name: Create Controller
         shell: sh
         run: |
-          java -jar ./jenkins-cli.jar -auth pyang:${{ secrets.THUNDER_OC_TOKEN }} -s https://sda.preview.cb-demos.io/cjoc/ create-job <./assets/controller-config.xml      
+          java -jar ./jenkins-cli.jar -auth pyang:${{ secrets.THUNDER_OC_TOKEN }} -s https://sda.preview.cb-demos.io/cjoc/ create-job workshop-controller <./assets/controller-config.xml      
