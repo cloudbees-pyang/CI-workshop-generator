@@ -1,0 +1,67 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<com.cloudbees.opscenter.server.model.ManagedMaster plugin="operations-center-server@3.26950">
+  <actions/>
+  <description></description>
+  <id>16</id>
+  <encodedName>workshop-controller1</encodedName>
+  <idName>16-workshop-controller1</idName>
+  <timeStamp>0</timeStamp>
+  <grantId>fac1720d-67e7-46bf-8d80-1bea448579e2</grantId>
+  <approved>true</approved>
+  <identity>MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqYOqflrh5zbjAukG9J/ITIrcNbameEHBEGVVBvzkEcWtV/mCraOHpJ/Yqc1VEz0MY3jQyn771TXgRlVW3xQl28knIWfEZ7K6z1y55K1+r3lx5i3bFGf2MefcD2ExRWSYvWaTjkDZWrsVOjIbJxgZp3X2GsojVAOXU4sHcFN41y1FxHGhHMyAP6eexS19QwZ2tnt1MY8Z7/RMLnREwLnhFeH1rMH/Gg/TBnX4NFHEmZ9TySj74c4tFB8vclwM5pB5z3jJK7lPRvMS2SYAcTiXEPI71IAg5NbUKgMhRAPZoC921uniQUqb7HkLBE3T/uiMqX9CSkT+ezvFFqSo/7J9mQIDAQAB</identity>
+  <properties class="com.cloudbees.opscenter.server.model.ConnectedMaster$PropertyList">
+    <com.cloudbees.opscenter.server.casc.config.ConnectedMasterCascProperty plugin="cloudbees-casc-server@2.46"/>
+    <com.cloudbees.opscenter.server.casc.config.ConnectedMasterTokenProperty plugin="cloudbees-casc-server@2.46">
+      <token>{AQAAABAAAAAww6Vn0QOiTWkrhFcvpNvENWWFQKDF7EgLh1s1JUQ9o4NxViUF4YMbIvdf/XOfVcv8VR6BM8zvEPZp38Ro9Ebu6w==}</token>
+    </com.cloudbees.opscenter.server.casc.config.ConnectedMasterTokenProperty>
+    <com.cloudbees.jenkins.plugins.platform.ui.configuration.oc.ConnectedMasterHeaderLabelOptInProperty plugin="cloudbees-unified-ui@1.32">
+      <optIn>true</optIn>
+    </com.cloudbees.jenkins.plugins.platform.ui.configuration.oc.ConnectedMasterHeaderLabelOptInProperty>
+    <com.cloudbees.opscenter.server.metrics.health.ConnectedMasterHealthCheckProperty plugin="operations-center-monitoring@3.26950">
+      <enabled>true</enabled>
+    </com.cloudbees.opscenter.server.metrics.health.ConnectedMasterHealthCheckProperty>
+    <com.cloudbees.opscenter.server.properties.MasterExecutorCountProperty>
+      <count>1</count>
+    </com.cloudbees.opscenter.server.properties.MasterExecutorCountProperty>
+    <com.cloudbees.esr.MasterReportingProperty plugin="esr@2.387.0.4">
+      <enabled>false</enabled>
+    </com.cloudbees.esr.MasterReportingProperty>
+    <com.cloudbees.opscenter.server.security.SecurityEnforcer_-OptOutProperty>
+      <securityEnforcerOptOutMode class="com.cloudbees.opscenter.server.security.SecurityEnforcerOptOutMode$OptOutNone"/>
+    </com.cloudbees.opscenter.server.security.SecurityEnforcer_-OptOutProperty>
+    <com.cloudbees.opscenter.server.properties.ConnectedMasterOwnerProperty>
+      <owners></owners>
+      <delay>5</delay>
+    </com.cloudbees.opscenter.server.properties.ConnectedMasterOwnerProperty>
+    <com.cloudbees.opscenter.server.envelope.extension.EnvelopeExtensionProperty>
+      <allowExceptions>false</allowExceptions>
+    </com.cloudbees.opscenter.server.envelope.extension.EnvelopeExtensionProperty>
+    <com.cloudbees.opscenter.server.config.ConnectedMasterConfigurationOptOutProperty>
+      <optOut>false</optOut>
+    </com.cloudbees.opscenter.server.config.ConnectedMasterConfigurationOptOutProperty>
+    <com.cloudbees.opscenter.server.properties.ConnectedMasterLicenseServerProperty>
+      <strategy class="com.cloudbees.opscenter.server.properties.ConnectedMasterLicenseServerProperty$PerUserLicensingStrategy"/>
+    </com.cloudbees.opscenter.server.properties.ConnectedMasterLicenseServerProperty>
+  </properties>
+  <configuration class="com.cloudbees.masterprovisioning.kubernetes.KubernetesMasterProvisioning" plugin="master-provisioning-kubernetes@3.26950">
+    <clusterEndpointId>default</clusterEndpointId>
+    <disk>15</disk>
+    <memory>2800</memory>
+    <cpus>3.0</cpus>
+    <javaOptions>-XshowSettings:vm -XX:+AlwaysPreTouch -XX:+DisableExplicitGC -XX:+ParallelRefProcEnabled -XX:+UseStringDeduplication -Dhudson.slaves.NodeProvisioner.initialDelay=0</javaOptions>
+    <image>CloudBees CI - Managed Controller - 2.440.3.8</image>
+    <domain>myorg-australia-ha-horizon</domain>
+    <allowExternalAgents>false</allowExternalAgents>
+    <fsGroup>1000</fsGroup>
+    <imagePullSecrets/>
+    <storageClassName>nfs</storageClassName>
+    <terminationGracePeriodSeconds>1200</terminationGracePeriodSeconds>
+    <livenessInitialDelaySeconds>300</livenessInitialDelaySeconds>
+    <livenessPeriodSeconds>10</livenessPeriodSeconds>
+    <livenessTimeoutSeconds>10</livenessTimeoutSeconds>
+    <readinessInitialDelaySeconds>30</readinessInitialDelaySeconds>
+    <readinessTimeoutSeconds>5</readinessTimeoutSeconds>
+    <readinessFailureThreshold>100</readinessFailureThreshold>
+    <yaml></yaml>
+  </configuration>
+</com.cloudbees.opscenter.server.model.ManagedMaster>
