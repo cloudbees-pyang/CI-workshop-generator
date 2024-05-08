@@ -13,14 +13,16 @@ jobs:
         shell: sh
         run: |
           curl -O https://sda.preview.cb-demos.io/cjoc/jnlpJars/jenkins-cli.jar
-      - uses: docker://openjdk
-        name: Setup shared agent
-        shell: sh
-        run: >
-          java -jar ./jenkins-cli.jar -auth pyang:${{ secrets.THUNDER_OC_TOKEN
-          }} -s https://sda.preview.cb-demos.io/cjoc/ shared-pod-template
-          --add      
       - uses: cloudbees-io/checkout@v1
         name: Download Assets
         with:
           repository: https://github.com/cloudbees-pyang/CI-workshop-generator.git
+          token: ${{ secrects.PYANG_GITHUB_TOKEN }}
+      - uses: docker://openjdk
+        name: Setup shared agent
+        shell: sh
+        run: |
+          ls
+          java -jar ./jenkins-cli.jar -auth pyang:${{ secrets.THUNDER_OC_TOKEN
+          }} -s https://sda.preview.cb-demos.io/cjoc/ shared-pod-template
+          --add <./CI-workshop-generator/share-pod-template.json      
