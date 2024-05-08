@@ -20,7 +20,7 @@ jobs:
         with:
           repository: cloudbees-pyang/CI-workshop-generator
           token: ${{ secrets.PYANG_GITHUB_TOKEN }}
-      - uses: docker://oraclelinux:9-slim
+      - uses: docker://openjdk:23-slim-bullseye
         name: Setup shared agent
         shell: sh
         run: |
