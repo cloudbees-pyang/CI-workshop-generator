@@ -16,7 +16,7 @@ jobs:
       - uses: cloudbees-io/checkout@v1
         name: Download Assets
         with:
-          repository: https://github.com/cloudbees-pyang/CI-workshop-generator.git
+          repository: cloudbees-pyang/CI-workshop-generator
           token: ${{ secrets.PYANG_GITHUB_TOKEN }}
       - uses: docker://openjdk
         name: Setup shared agent
