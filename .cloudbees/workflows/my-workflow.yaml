@@ -23,6 +23,7 @@ jobs:
         name: Setup shared agent
         shell: sh
         run: |
+          java -jar ./jenkins-cli.jar -auth pyang:${{ secrets.THUNDER_OC_TOKEN }} -s https://sda.preview.cb-demos.io/cjoc/ shared-pod-template --delete workshop-default
           java -jar ./jenkins-cli.jar -auth pyang:${{ secrets.THUNDER_OC_TOKEN }} -s https://sda.preview.cb-demos.io/cjoc/ shared-pod-template --add <./assets/share-pod-template.json      
       - uses: docker://openjdk
         name: Create Controller
