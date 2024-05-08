@@ -14,17 +14,16 @@ jobs:
         run: |
           curl -O https://sda.preview.cb-demos.io/cjoc/jnlpJars/jenkins-cli.jar
           chmod a+x ./jenkins-cli.jar
-          ls
       - uses: cloudbees-io/checkout@v1
         name: Download Assets
         with:
           repository: cloudbees-pyang/CI-workshop-generator
           token: ${{ secrets.PYANG_GITHUB_TOKEN }}
-      - uses: docker://openjdk:23-slim-bullseye
+          path: assets
+      - uses: docker://openjdk
         name: Setup shared agent
         shell: sh
         run: |
-          ls
           java -jar ./jenkins-cli.jar -auth pyang:${{ secrets.THUNDER_OC_TOKEN
           }} -s https://sda.preview.cb-demos.io/cjoc/ shared-pod-template
-          --add <./share-pod-template.json      
+          --add <./assets/share-pod-template.json      
