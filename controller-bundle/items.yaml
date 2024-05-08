@@ -1,0 +1,132 @@
+removeStrategy:
+  rbac: SYNC
+  items: NONE
+items:
+- kind: pipeline
+  name: AutoScaling
+  concurrentBuild: true
+  definition:
+    cpsFlowDefinition:
+      sandbox: true
+      script: |-
+        pipeline {
+            agent { label 'local' }
+
+            stages {
+                stage('Generate CPU Load') {
+                    steps {
+                        script {
+                            sh """
+                                # Use a loop to generate CPU load
+                                for i in {1..20}; do
+                                    while true; do
+                                        :  # This is a no-op, which consumes CPU cycles
+                                    done
+                                done
+                            """
+                        }
+                    }
+                }
+            }
+        }
+  description: ''
+  disabled: false
+  displayName: AutoScaling
+  resumeBlocked: false
+- kind: pipeline
+  name: HS-Feature-Demo
+  concurrentBuild: true
+  definition:
+    cpsFlowDefinition:
+      sandbox: true
+      script: |
+        // Uses Declarative syntax to run commands inside a container.
+        pipeline {
+            agent {
+                kubernetes {
+                    // Rather than inline YAML, in a multibranch Pipeline you could use: yamlFile 'jenkins-pod.yaml'
+                    // Or, to avoid YAML:
+                    // containerTemplate {
+                    //     name 'shell'
+                    //     image 'ubuntu'
+                    //     command 'sleep'
+                    //     args 'infinity'
+                    // }
+                    yaml '''
+        apiVersion: v1
+        kind: Pod
+        spec:
+          containers:
+          - name: shell
+            image: ubuntu
+            command:
+            - sleep
+            args:
+            - infinity
+        '''
+                    // Can also wrap individual steps:
+                    // container('shell') {
+                    //     sh 'hostname'
+                    // }
+                    defaultContainer 'shell'
+                }
+            }
+            stages {
+                stage('Main') {
+                    steps {
+                        sh 'hostname'
+                        sleep 120
+                    }
+                }
+            }
+        }
+  description: ''
+  disabled: false
+  displayName: HS-Feature-Demo
+  resumeBlocked: false
+- kind: pipeline
+  name: long-running
+  concurrentBuild: true
+  definition:
+    cpsFlowDefinition:
+      sandbox: true
+      script: |-
+        pipeline {
+            agent { label 'ha' }
+            stages {
+                stage('Long running job') {
+                    steps {
+                        sh '''
+                        env | sort
+                        for i in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+                        do
+                          echo "sleep #$i"
+                          echo "Controller-2 long running job"
+                          date
+                          sleep 10s
+                        done
+                        '''
+                    }
+                }
+            }
+        }
+  description: ''
+  disabled: false
+  displayName: long-running
+  resumeBlocked: false
+- kind: freeStyle
+  name: simple
+  blockBuildWhenDownstreamBuilding: false
+  blockBuildWhenUpstreamBuilding: false
+  builders:
+  - shell:
+      command: echo "hello"
+  concurrentBuild: false
+  description: ''
+  disabled: false
+  displayName: simple
+  label: ha
+  scm:
+    none: {}
+  scmCheckoutStrategy:
+    standard: {}
