@@ -28,4 +28,4 @@ jobs:
         name: Create Controller
         shell: sh
         run: |
-          java -jar ./jenkins-cli.jar -auth pyang:${{ secrets.THUNDER_OC_TOKEN }} -s https://sda.preview.cb-demos.io/cjoc/ managed-master-provision workshop-controller1      
+          java -jar ./jenkins-cli.jar -auth pyang:${{ secrets.THUNDER_OC_TOKEN }} -s https://sda.preview.cb-demos.io/cjoc/ apply-configuration <./assets/controller.yaml      
