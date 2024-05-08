@@ -1,22 +1,26 @@
 apiVersion: automation.cloudbees.io/v1alpha1
 kind: workflow
 name: My workflow
-
 on:
   push:
     branches:
-      - '**'
-
+      - "**"
 jobs:
   build:
     steps:
-      - name: Download Jenkins Cli
-        uses: docker://openjdk
+      - uses: docker://openjdk
+        name: Download Jenkins Cli
         shell: sh
         run: |
           curl -O https://sda.preview.cb-demos.io/cjoc/jnlpJars/jenkins-cli.jar
-      - name: Setup shared agent
-        uses: docker://openjdk
+      - uses: docker://openjdk
+        name: Setup shared agent
         shell: sh
-        run: |
-          java -jar ./jenkins-cli.jar -auth pyang:${{ secrets.THUNDER_OC_TOKEN }} -s https://sda.preview.cb-demos.io/cjoc/ shared-pod-template --get     
+        run: >
+          java -jar ./jenkins-cli.jar -auth pyang:${{ secrets.THUNDER_OC_TOKEN
+          }} -s https://sda.preview.cb-demos.io/cjoc/ shared-pod-template
+          --add      
+      - uses: cloudbees-io/checkout@v1
+        name: Download Assets
+        with:
+          repository: https://github.com/cloudbees-pyang/CI-workshop-generator.git
