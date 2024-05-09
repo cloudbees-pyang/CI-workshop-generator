@@ -2,11 +2,24 @@ unclassified:
   bundleStorageService:
     activated: true
     bundles:
-    - name: "workshop-scm"
+    - name: "cwroble-scm"
       retriever:
         SCM:
           scmSource:
             github:
               configuredByUrl: true
               credentialsId: "43640dc0-47df-4c21-af27-555604649f29"
-              repositoryUrl: "https://github.com/cloudbees-pyang/CI-workshop-generator.git"
+              id: "828372c0-4759-4586-826a-612c5f9e681b"
+              repoOwner: "poc-prep"
+              repository: "cloud-config-bundle"
+              repositoryUrl: "https://github.com/poc-prep/cloud-config-bundle.git"
+              traits:
+              - gitHubBranchDiscovery:
+                  strategyId: 1
+              - gitHubPullRequestDiscovery:
+                  strategyId: 2
+              - gitHubForkDiscovery:
+                  strategyId: 2
+                  trust: "gitHubTrustPermissions"
+    - name: "2dd8fd8e-3dc9-46ce-9081-afc978394d2d"
+      retriever: "localFolderRetriever"
