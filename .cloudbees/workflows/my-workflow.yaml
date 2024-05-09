@@ -13,7 +13,7 @@ jobs:
         shell: sh
         run: |
           curl -O https://sda.preview.cb-demos.io/cjoc/jnlpJars/jenkins-cli.jar
-          curl -O https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 
+          curl -O https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 ./yq
           ls
           chmod +x ./yq
           ./yq 
