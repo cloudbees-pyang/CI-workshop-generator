@@ -13,10 +13,8 @@ jobs:
         shell: sh
         run: |
           curl -O https://sda.preview.cb-demos.io/cjoc/jnlpJars/jenkins-cli.jar
-          curl -O https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 ./yq
-          ls
+          curl -o ./yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 ./yq
           chmod +x ./yq
-          ./yq 
       - uses: cloudbees-io/checkout@v1
         name: Download Assets
         with:
@@ -53,4 +51,5 @@ jobs:
         name: create user and assign group
         shell: sh
         run: |
-          java -jar ./jenkins-cli.jar -auth pyang:${{ secrets.THUNDER_OC_TOKEN }} -s https://sda.preview.cb-demos.io/cjoc/ casc-bundle-set-controller -b HA-HS -c workshop-controller 
+          java -jar ./jenkins-cli.jar -auth pyang:${{ secrets.THUNDER_OC_TOKEN }} -s https://sda.preview.cb-demos.io/cjoc/ export-configuration >./oc-conf.yaml
+          ./yq ".securityRealm" ./oc-conf.yaml 
