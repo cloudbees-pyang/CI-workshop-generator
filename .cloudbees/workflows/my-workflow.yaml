@@ -13,7 +13,7 @@ jobs:
         shell: sh
         run: |
           curl -O https://sda.preview.cb-demos.io/cjoc/jnlpJars/jenkins-cli.jar
-          curl -o ./yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_386
+          curl -o ./yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
           chmod +x ./yq
           ./yq -version
       - uses: cloudbees-io/checkout@v1
