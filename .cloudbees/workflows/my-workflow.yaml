@@ -15,6 +15,7 @@ jobs:
           curl -O https://sda.preview.cb-demos.io/cjoc/jnlpJars/jenkins-cli.jar
           curl -o ./yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_386
           chmod +x ./yq
+          ./yq -version
       - uses: cloudbees-io/checkout@v1
         name: Download Assets
         with:
