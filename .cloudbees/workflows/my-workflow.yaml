@@ -52,4 +52,4 @@ jobs:
         shell: sh
         run: |
           java -jar ./jenkins-cli.jar -auth pyang:${{ secrets.THUNDER_OC_TOKEN }} -s https://sda.preview.cb-demos.io/cjoc/ export-configuration >> ./oc-conf.yaml
-          ./yq ".jenkins[]" ./oc-conf.yaml 
+          ./yq ./oc-conf.yaml 
