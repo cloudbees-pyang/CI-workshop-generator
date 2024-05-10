@@ -13,10 +13,6 @@ jobs:
         shell: sh
         run: |
           curl -O https://sda.preview.cb-demos.io/cjoc/jnlpJars/jenkins-cli.jar
-          yum install wget
-          curl -o ./yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
-          chmod +x ./yq
-          ./yq -version
       - uses: cloudbees-io/checkout@v1
         name: Download Assets
         with:
@@ -49,11 +45,10 @@ jobs:
 #          java -jar ./jenkins-cli.jar -auth pyang:${{ secrets.THUNDER_OC_TOKEN }} -s https://sda.preview.cb-demos.io/cjoc/ casc-bundle-set-controller -b HA-HS -c workshop-controller 
 #          java -jar ./jenkins-cli.jar -auth pyang:${{ secrets.THUNDER_OC_TOKEN }} -s https://sda.preview.cb-demos.io/cjoc/ managed-master-restart workshop-controller     
 
-      - uses: docker://openjdk
+      - uses: docker://poseidon1979/jenkins-cli:1.0
         name: create user and assign group
         shell: sh
         run: |
           java -jar ./jenkins-cli.jar -auth pyang:${{ secrets.THUNDER_OC_TOKEN }} -s https://sda.preview.cb-demos.io/cjoc/ export-configuration >> ./oc-conf.yaml
-          snap install yq
-          yq eval ".jenkins.securityRealm" ./oc-conf.yaml 
+          yq_linux_amd64 eval ".jenkins.securityRealm" ./oc-conf.yaml 
           
