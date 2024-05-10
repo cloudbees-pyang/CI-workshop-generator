@@ -9,6 +9,6 @@ unclassified:
             github:
               configuredByUrl: true
               credentialsId: "workshop-credential"
-              repositoryUrl: "https://github.com/poc-prep/cloud-config-bundle.git"
+              repositoryUrl: "https://github.com/cloudbees-pyang/CI-workshop-generator.git"
 
 
