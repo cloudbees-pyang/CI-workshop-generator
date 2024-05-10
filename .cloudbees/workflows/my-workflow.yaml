@@ -58,6 +58,4 @@ jobs:
         name: create credential
         shell: sh
         run: |
-
-          java -jar ./jenkins-cli.jar -auth pyang:${{ secrets.THUNDER_OC_TOKEN }} -s https://sda.preview.cb-demos.io/cjoc/ get-credentials-as-xml system::system::jenkins "(global)" 43640dc0-47df-4c21-af27-555604649f29 
-          java -jar ./jenkins-cli.jar -auth pyang:${{ secrets.THUNDER_OC_TOKEN }} -s https://sda.preview.cb-demos.io/cjoc/ create-credentials-by-xml SYSTEM global < ./assets/credential.xml
+          java -jar ./jenkins-cli.jar -auth pyang:${{ secrets.THUNDER_OC_TOKEN }} -s https://sda.preview.cb-demos.io/cjoc/ create-credentials-by-xml system::system::jenkins "(global)" < ./assets/credential.xml
