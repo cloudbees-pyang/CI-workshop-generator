@@ -8,7 +8,7 @@ unclassified:
           scmSource:
             github:
               configuredByUrl: true
-              credentialsId: "43640dc0-47df-4c21-af27-555604649f29"
+              credentialsId: "workshop-credential"
               repositoryUrl: "https://github.com/poc-prep/cloud-config-bundle.git"
 
 
