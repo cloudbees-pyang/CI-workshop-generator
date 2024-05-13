@@ -1,14 +1,10 @@
-unclassified:
-  bundleStorageService:
-    activated: true
-    bundles:
-    - name: "workshop-casc"
-      retriever:
-        SCM:
-          scmSource:
-            github:
-              configuredByUrl: true
-              credentialsId: "workshop-credential"
-              repositoryUrl: "https://github.com/cloudbees-pyang/CI-workshop-generator.git"
+name: "workshop-casc"
+retriever:
+  SCM:
+    scmSource:
+      github:
+        configuredByUrl: true
+        credentialsId: "workshop-credential"
+        repositoryUrl: "https://github.com/cloudbees-pyang/CI-workshop-generator.git"
 
 
