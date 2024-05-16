@@ -42,6 +42,7 @@ jobs:
           yq '{"bundles": .}' -i oc-casc-conf.yaml
           yq '{"bundleStorageService": .}' -i oc-casc-conf.yaml
           yq '{"unclassified": .}' -i oc-casc-conf.yaml 
+          cat oc-casc-conf.yaml
 #          yq eval '.unclassified.bundleStorageService.bundles += [{ "myFile" : "./assets/oc-casc-config.yaml" }]' -i oc-conf.yaml
 #          yq '(.. | select(has("myFile"))) |= load(.myFile)' -i oc-conf.yaml 
 #          java -jar ./jenkins-cli.jar -auth ${{ vars.USER_NAME }}:${{ secrets.OC_TOKEN }} -s ${{ vars.oc-url }} apply-configuration < oc-conf.yaml
