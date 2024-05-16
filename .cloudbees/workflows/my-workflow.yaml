@@ -37,7 +37,7 @@ jobs:
         shell: sh
         run: |
           java -jar ./jenkins-cli.jar -auth ${{ vars.USER_NAME }}:${{ secrets.OC_TOKEN }} -s ${{ vars.oc-url }} export-configuration >> ./oc-conf.yaml
-          yq eval '.unclassified.bundleStorageService.bundles + [{ "myFile" : "./assets/oc-casc-config.yaml" }]' -i oc-conf.yaml 
+          yq eval '.unclassified.bundleStorageService.bundles += [{ "myFile" : "./assets/oc-casc-config.yaml" }]' -i oc-conf.yaml 
           yq '(.. | select(has("myFile"))) |= load(.myFile)' -i oc-conf.yaml
           yq eval '.unclassified.bundleStorageService.bundles' oc-conf.yaml
 #          yq eval '.unclassified.bundleStorageService.bundles += [{ "myFile" : "./assets/oc-casc-config.yaml" }]' -i oc-conf.yaml
