@@ -64,6 +64,6 @@ jobs:
         shell: sh
         run: |
           java -jar ./jenkins-cli.jar -auth ${{ vars.USER_NAME }}:${{ secrets.OC_TOKEN }} -s ${{ vars.oc-url }} casc-bundle-set-controller -b controller-bundle -c workshop-controller 
-          java -jar ./jenkins-cli.jar -auth ${{ vars.USER_NAME }}:${{ secrets.OC_TOKEN }} -s ${{ vars.oc-url }} managed-master-restart workshop-controller     
+          java -jar ./jenkins-cli.jar -auth ${{ vars.USER_NAME }}:${{ secrets.OC_TOKEN }} -s ${{ vars.oc-url }} managed-master-provision-and-start workshop-controller     
 
 
