@@ -6,5 +6,8 @@ retriever:
         configuredByUrl: true
         credentialsId: "workshop-credential"
         repositoryUrl: "https://github.com/cloudbees-pyang/CI-workshop-generator.git"
+        traits:
+        - gitHubBranchDiscovery:
+            strategyId: 1
 
 
