@@ -50,7 +50,7 @@
     <cpus>3.0</cpus>
     <javaOptions>-XshowSettings:vm -XX:+AlwaysPreTouch -XX:+DisableExplicitGC -XX:+ParallelRefProcEnabled -XX:+UseStringDeduplication -Dhudson.slaves.NodeProvisioner.initialDelay=0</javaOptions>
     <image>CloudBees CI - Managed Controller - 2.440.3.8</image>
-    <domain>myorg-australia-ha-horizon</domain>
+    <domain>workshop-controller1</domain>
     <allowExternalAgents>false</allowExternalAgents>
     <fsGroup>1000</fsGroup>
     <imagePullSecrets/>
