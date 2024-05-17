@@ -54,6 +54,6 @@ jobs:
         name: set casc bundle and start Controller
         shell: sh
         run: |
-          java -jar ./jenkins-cli.jar -auth -auth ${{ vars.USER_NAME }}:${{ secrets.OC_TOKEN }} -s ${{ vars.oc-url }} casc-bundle-set-controller -b HA-HS -c workshop-controller 
-          java -jar ./jenkins-cli.jar -auth -auth ${{ vars.USER_NAME }}:${{ secrets.OC_TOKEN }} -s ${{ vars.oc-url }} managed-master-restart workshop-controller      
+          java -jar ./jenkins-cli.jar -auth ${{ vars.USER_NAME }}:${{ secrets.OC_TOKEN }} -s ${{ vars.oc-url }} casc-bundle-set-controller -b HA-HS -c workshop-controller 
+          java -jar ./jenkins-cli.jar -auth ${{ vars.USER_NAME }}:${{ secrets.OC_TOKEN }} -s ${{ vars.oc-url }} managed-master-restart workshop-controller      
 
