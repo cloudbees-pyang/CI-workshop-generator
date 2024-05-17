@@ -14,18 +14,21 @@ jobs:
         shell: sh
         run: |
           curl -O ${{ vars.oc-url }}/jnlpJars/jenkins-cli.jar
+
       - uses: cloudbees-io/checkout@v1
         name: Download Assets
         with:
           repository: cloudbees-pyang/CI-workshop-generator
           token: ${{ secrets.PYANG_GITHUB_TOKEN }}
           path: assets
+
       - uses: docker://openjdk
         name: Setup shared agent
         shell: sh
         run: |
           java -jar ./jenkins-cli.jar -auth ${{ vars.USER_NAME }}:${{ secrets.OC_TOKEN }} -s ${{ vars.oc-url }} shared-pod-template --add <./assets/share-pod-template.json      
-          
+
+
       - uses: docker://poseidon1979/jenkins-cli:1.1
         name: create credential
         shell: sh
@@ -44,6 +47,12 @@ jobs:
           yq '{"unclassified": .}' -i oc-casc-conf.yaml 
           java -jar ./jenkins-cli.jar -auth ${{ vars.USER_NAME }}:${{ secrets.OC_TOKEN }} -s ${{ vars.oc-url }} apply-configuration < oc-casc-conf.yaml
 
+      - uses: docker://poseidon1979/jenkins-cli:1.1
+        name: Checkout casc bundle
+        shell: sh
+        run: |
+          java -jar ./jenkins-cli.jar -auth ${{ vars.USER_NAME }}:${{ secrets.OC_TOKEN }} -s ${{ vars.oc-url }} casc-check-out-bundles
+
       - uses: docker://openjdk
         name: Create Controller
         shell: sh
@@ -54,6 +63,7 @@ jobs:
         name: set casc bundle and start Controller
         shell: sh
         run: |
-          java -jar ./jenkins-cli.jar -auth ${{ vars.USER_NAME }}:${{ secrets.OC_TOKEN }} -s ${{ vars.oc-url }} casc-bundle-set-controller -b HA-HS -c workshop-controller 
-          java -jar ./jenkins-cli.jar -auth ${{ vars.USER_NAME }}:${{ secrets.OC_TOKEN }} -s ${{ vars.oc-url }} managed-master-restart workshop-controller      
+          java -jar ./jenkins-cli.jar -auth ${{ vars.USER_NAME }}:${{ secrets.OC_TOKEN }} -s ${{ vars.oc-url }} casc-bundle-set-controller -b controller-bundle -c workshop-controller 
+          java -jar ./jenkins-cli.jar -auth ${{ vars.USER_NAME }}:${{ secrets.OC_TOKEN }} -s ${{ vars.oc-url }} managed-master-restart workshop-controller     
+
 
