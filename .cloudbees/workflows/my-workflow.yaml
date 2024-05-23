@@ -51,7 +51,7 @@ jobs:
         name: Checkout casc bundle
         shell: sh
         run: |
-          java -jar ./jenkins-cli.jar -auth ${{ vars.USER_NAME }}:${{ secrets.OC_TOKEN }} -s ${{ vars.oc-url }} casc-check-out-bundles -t 60
+          java -jar ./jenkins-cli.jar -auth ${{ vars.USER_NAME }}:${{ secrets.OC_TOKEN }} -s ${{ vars.oc-url }} casc-check-out-bundles -t 120
 
       - uses: docker://openjdk
         name: Create Controller
